@@ -1,0 +1,73 @@
+# A TODO List
+
+## Motivation
+
+Create a simple todo list to practice react-native and react-redux concepts.
+
+## Description
+
+The TODO list will contain briefly:
+  - A text input where the user will be able to tell what's the name of the
+    new task.
+  - A button - "add task" - that when clicked will add a new task to the list,
+    with the name given in the text input.
+  - The tasks will be clickable, as the user clicks it, the task will be
+    toggled as completed/incomplete (strike-through)
+  - A footer with buttons allowing the user to filter, showing only
+    'Completed', 'Active'.
+
+## Design
+
+### Presentation Components
+
+#### TODO List
+
+A react component rendered as a FlatList showing all the tasks as clickable
+elements with the text of the task rendered as striked-through or clean.
+
+ - Props:
+    - tasks: Array of tasks containing task elements with {id, text, completed}
+    - onTaskClicked(id: number): Handler that will set a task as completed or
+      not. Should be used as a prop instead of dispatching the event internally
+      in order to allow this component to be still Presentational, not
+      requiring it to have access to the state.
+
+#### Task
+
+A task item
+
+ - Props:
+    - text:
+    - completed:
+    - onClick:
+
+#### Add Task
+
+A component containing a button: Add TODO and a text-input.
+
+ - Props:
+   - onAddTaskClicked(name): Handler that will be used to add a new task with
+     the given name.
+
+#### Footer
+
+Containing links for the filters:
+ - Props:
+  - onFilterClicked(id)
+
+#### App
+
+Component that will contain and render all the other components
+
+
+### Container Components
+
+Connect the presentation components to Redux
+
+#### VisibleTaskList
+
+Filters the todos according to the current visibility filter
+
+#### FilterLink ???
+
+String is the visibility filter it represents
